@@ -1,9 +1,13 @@
+var path = require("path");
+
 module.exports = {
   context: __dirname,
   entry: "./frontend/todo.jsx",
   output: {
-    path: "./app/assets/javascripts",
-    filename: "bundle.js"
+    path: path.join(__dirname, "app", "assets", "javascripts"),
+    filename: "bundle.js",
+    devtoolModuleFilenameTemplate: '[resourcePath]',
+    devtoolFallbackModuleFilenameTemplate: '[resourcePath]?[hash]'
   },
   module: {
     loaders: [
