@@ -1,6 +1,7 @@
 var React = require('react'),
-  TodoStore = require('../stores/todo_store'),
-  TodoListItem = require("./todo_list_item");
+    TodoStore = require('../stores/todo_store'),
+    TodoListItem = require("./todo_list_item"),
+    TodoForm = require("./todo_form");
 
 var TodoList = React.createClass({
   getInitialState: function (){
@@ -35,6 +36,10 @@ var TodoList = React.createClass({
     return (
       <div>
         { items }
+
+        <hr></hr>
+
+        <TodoForm />
       </div>
     );
   }
