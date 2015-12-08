@@ -4,6 +4,7 @@ var React = require("react"),
 var DoneButton = React.createClass({
   handleDone: function (e) {
     e.preventDefault();
+
     TodoStore.toggleDone(this.props.id);
   },
 
