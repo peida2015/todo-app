@@ -3,10 +3,6 @@ class Api::TodosController < ApplicationController
     render json: Todo.all
   end
 
-  def show
-
-  end
-
   def create
     render json: Todo.create!(todo_params)
   end

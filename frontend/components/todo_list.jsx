@@ -18,10 +18,9 @@ var TodoList = React.createClass({
   },
 
   getTitles: function () {
-    var titleList = this.state.list.map(function (todo) {
+    return this.state.list.map(function (todo) {
       return (<li key={ todo.id }>{ todo.title }</li>);
     });
-    return titleList;
   },
 
   todoChanged: function () {

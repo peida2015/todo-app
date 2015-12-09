@@ -1,4 +1,5 @@
 var React = require("react"),
+    bootstrap = require("bootstrap"),
     TodoStore = require("../stores/todo_store");
 
 var DoneButton = React.createClass({
@@ -13,7 +14,9 @@ var DoneButton = React.createClass({
 
     return (
       <button className="btn btn-success"
-        onClick={ this.handleDone }>{ buttonText }</button>
+              onClick={ this.handleDone }>
+        { buttonText }
+      </button>
     );
   }
 });

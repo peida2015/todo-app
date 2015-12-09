@@ -21,7 +21,7 @@ var TodoStore = {
   },
 
   all: function () {
-    return _todos;
+    return _todos.slice();
   },
 
   fetch: function () {
@@ -41,7 +41,7 @@ var TodoStore = {
   destroy: function (id) {
     var todoIndex = TodoStore.find(id);
 
-    if (typeof todoIndex !== "undefined") {
+    if (todoIndex !== -1) {
       $.ajax({
         url: "/api/todos/" + id,
         type: "DELETE",
@@ -54,21 +54,18 @@ var TodoStore = {
   },
 
   find: function (id) {
-    var todoIndex = _todos.findIndex(function (todo) {
+    return _todos.findIndex(function (todo) {
       if (todo.id === id) { return true; }
     });
-
-    if (todoIndex !== -1) { return todoIndex; }
   },
 
   toggleDone: function (id) {
     var todoIndex = TodoStore.find(id);
     var data = {};
-    var todoDoneStatus, updatedStatus;
+    var updatedStatus;
 
-    if (typeof todoIndex !== "undefined") {
-      todoDoneStatus = _todos[todoIndex].done;
-      updatedStatus = (todoDoneStatus ? false : true);
+    if (todoIndex !== -1) {
+      updatedStatus = !_todos[todoIndex].done;
       data = { todo: { done: updatedStatus } };
 
       $.ajax({

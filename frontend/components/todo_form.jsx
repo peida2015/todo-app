@@ -1,4 +1,5 @@
 var React = require("react"),
+    bootstrap = require("bootstrap"),
     TodoStore = require('../stores/todo_store');
 
 var TodoForm = React.createClass({
@@ -26,17 +27,19 @@ var TodoForm = React.createClass({
   render: function () {
     return (
       <form onSubmit={ this.handleSubmit }>
-        <div>
+        <div className="form-group">
           <input type="text"
-            value={ this.state.title }
-            onChange={ this.updateTitle }
-            placeholder="Todo title" />
+                 value={ this.state.title }
+                 onChange={ this.updateTitle }
+                 placeholder="Todo title"
+                 className="form-control"/>
         </div>
 
-        <div>
+        <div className="form-group">
           <textarea value={ this.state.body }
-            onChange={ this.updateBody }
-            placeholder="Todo body" />
+                    onChange={ this.updateBody }
+                    placeholder="Todo body"
+                    className="form-control" />
         </div>
 
         <input type="submit" />
