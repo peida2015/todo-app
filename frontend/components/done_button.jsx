@@ -1,20 +1,13 @@
 var React = require("react"),
-    bootstrap = require("bootstrap"),
-    TodoStore = require("../stores/todo_store");
+    bootstrap = require("bootstrap");
 
 var DoneButton = React.createClass({
-  handleDone: function (e) {
-    e.preventDefault();
-
-    TodoStore.toggleDone(this.props.id);
-  },
-
   render: function () {
     var buttonText = (this.props.done ? "Undo" : "Done");
 
     return (
       <button className="btn btn-success"
-              onClick={ this.handleDone }>
+              onClick={ this.props.handleDone }>
         { buttonText }
       </button>
     );

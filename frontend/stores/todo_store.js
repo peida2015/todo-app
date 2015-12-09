@@ -65,7 +65,7 @@ var TodoStore = {
     var updatedStatus;
 
     if (todoIndex !== -1) {
-      updatedStatus = !_todos[todoIndex].done;
+      updatedStatus = !(_todos[todoIndex].done);
       data = { todo: { done: updatedStatus } };
 
       $.ajax({

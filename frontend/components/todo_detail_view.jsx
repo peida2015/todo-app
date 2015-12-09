@@ -1,6 +1,7 @@
 var React = require('react'),
     bootstrap = require("bootstrap"),
-    TodoStore = require('../stores/todo_store');
+    TodoStore = require('../stores/todo_store'),
+    StepList = require('./step_list');
 
 var TodoDetailView = React.createClass({
   deleteButton: function () {
@@ -9,6 +10,12 @@ var TodoDetailView = React.createClass({
               onClick={ this.handleDeleteClick }>
         Delete
       </button>
+    );
+  },
+
+  stepList: function () {
+    return (
+      <StepList todoId={ this.props.id } />
     );
   },
 
@@ -25,6 +32,7 @@ var TodoDetailView = React.createClass({
       <div>
         <div>{ this.props.body }</div>
         <div>{ this.deleteButton() }</div>
+        { this.stepList() }
       </div>
     );
   }

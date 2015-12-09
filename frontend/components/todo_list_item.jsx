@@ -1,7 +1,8 @@
 var React = require('react'),
     bootstrap = require("bootstrap"),
     DoneButton = require("./done_button"),
-    TodoDetailView = require("./todo_detail_view");
+    TodoDetailView = require("./todo_detail_view"),
+    TodoStore = require("../stores/todo_store");
 
 var TodoListItem = React.createClass({
   getInitialState: function () {
@@ -13,6 +14,12 @@ var TodoListItem = React.createClass({
       <TodoDetailView body={ this.props.item.body }
                       id={ this.props.item.id }/>
     );
+  },
+
+  handleDone: function (e) {
+    e.preventDefault();
+
+    TodoStore.toggleDone(this.props.item.id);
   },
 
   handleDetailClick: function (e) {
@@ -28,12 +35,12 @@ var TodoListItem = React.createClass({
              onClick={ this.handleDetailClick }>
             { this.props.item.title }
           </a>
+          <DoneButton done={ this.props.item.done }
+                      handleDone={ this.handleDone }
+                      style="display: inline"/>
         </div>
 
         { this.state.detailed ? this.showDetail() : "" }
-
-        <DoneButton done={ this.props.item.done }
-                    id={ this.props.item.id }/>
 
       </div>
     );

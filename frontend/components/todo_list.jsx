@@ -17,9 +17,11 @@ var TodoList = React.createClass({
     TodoStore.removeChangedHandler(this.todoChanged);
   },
 
-  getTitles: function () {
+  todoListItems: function () {
     return this.state.list.map(function (todo) {
-      return (<li key={ todo.id }>{ todo.title }</li>);
+      return (
+        <TodoListItem key={ todo.id } item={ todo } />
+      );
     });
   },
 
@@ -28,13 +30,9 @@ var TodoList = React.createClass({
   },
 
   render: function () {
-    var items = this.state.list.map(function (todo) {
-      return (<TodoListItem key={ todo.id } item={ todo } />);
-    });
-
     return (
       <div>
-        { items }
+        { this.todoListItems() }
 
         <hr></hr>
 

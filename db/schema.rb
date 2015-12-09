@@ -14,10 +14,11 @@
 ActiveRecord::Schema.define(version: 20151208233258) do
 
   create_table "steps", force: :cascade do |t|
-    t.integer  "todo_id",    null: false
-    t.string   "body",       null: false
-    t.datetime "created_at", null: false
-    t.datetime "updated_at", null: false
+    t.integer  "todo_id",                    null: false
+    t.string   "body",                       null: false
+    t.boolean  "done",       default: false
+    t.datetime "created_at",                 null: false
+    t.datetime "updated_at",                 null: false
   end
 
   add_index "steps", ["todo_id"], name: "index_steps_on_todo_id"
